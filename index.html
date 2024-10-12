@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Bangladesh</title>
+    <script src="app.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-stone-700">
+
+    <!-- Navbar -->
+    <nav class="p-4 shadow sticky z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="blog.html" class="bg-green-200 p-2 px-5 rounded text-green-700">Blog</a>
+            <div class="text-center flex">
+                <img src="assets/logo.png" alt="Donate Bangladesh Logo" class="inline-block h-10">
+                <p class="pt-3 pl-3"> Donate Bangladesh</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center text-yellow-500">
+                    <img src="assets/coin.png" alt="Coin Icon" class="h-5 ml-1">
+                    <span class="px-3">5500 BDT</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Buttons -->
+    <div class="container mx-auto mt-6 flex justify-center space-x-4">
+        <button id="donation-btn" class="bg-green-200 px-4 py-2 rounded text-green-700 active">Donation</button>
+        <button id="history-btn" class="bg-white px-4 py-2 rounded border border-gray-300">History</button>
+    </div>
+
+    <!-- Donation Cards -->
+    <section id="donation-section" class="container mx-auto mt-6">
+        <!-- First Card -->
+        <div class="bg-white p-6 rounded-md border-2 mb-4 mx-32 flex">
+            <img src="assets/noakhali.png" class="h-auto w-1/4 rounded-md mr-4">
+            <div>
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Donate for Flood at Noakhali, Bangladesh</h3>
+                    <span class="text-yellow-500">0 BDT</span>
+                </div>
+                <p class="text-gray-600 mt-2">The recent floods in Noakhali have caused significant damage...</p>
+                <input type="text" placeholder="Write Donation Amount" class="border border-gray-300 rounded px-3 py-2 mt-4 w-full">
+                <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded">Donate Now</button>
+            </div>
+        </div>
+
+        <!-- Second Card -->
+        <div class="bg-white p-6 rounded-md border-2 mb-4 mx-32 flex">
+            <img src="assets/feni.png" class="h-auto w-1/4 rounded-md mr-4">
+            <div>
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Donate for Flood Relief in Feni, Bangladesh</h3>
+                    <span class="text-yellow-500">600 BDT</span>
+                </div>
+                <p class="text-gray-600 mt-2">The recent floods in Feni have devastated local communities...</p>
+                <input type="text" placeholder="Write Donation Amount" class="border border-gray-300 rounded px-3 py-2 mt-4 w-full">
+                <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded">Donate Now</button>
+            </div>
+        </div>
+
+        <!-- Third Card -->
+        <div class="bg-white p-6 rounded-md border-2 mb-4 mx-32 flex">
+            <img src="assets/quota-protest.png" class="h-auto w-1/4 rounded-md mr-4">
+            <div>
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Aid for Injured in the Quota Movement</h3>
+                    <span class="text-yellow-500">2400 BDT</span>
+                </div>
+                <p class="text-gray-600 mt-2">The recent Quota movement has resulted in numerous injuries...</p>
+                <input type="text" placeholder="Write Donation Amount" class="border border-gray-300 rounded px-3 py-2 mt-4 w-full">
+                <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded">Donate Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section (Initially hidden) -->
+    <section id="history-section" class="container mx-auto mt-6 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+            <h3 class="text-xl font-semibold">History</h3>
+            <ul id="history-list" class="mt-4 text-gray-600"></ul>
+        </div>
+    </section>
+
+</body>
+</html>

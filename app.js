@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const donationBtn = document.getElementById('donation-btn');
-    const historyBtn = document.getElementById('history-btn');
-    const donationSection = document.getElementById('donation-section');
-    const historySection = document.getElementById('history-section');
-    const balanceDisplay = document.querySelector('.text-yellow-500');
-    let currentBalance = 5500; // Initial balance
+    const dBtn = document.getElementById('donation-btn');
+    const hBtn = document.getElementById('history-btn');
+    const dSec = document.getElementById('donation-section');
+    const hSec = document.getElementById('history-section');
+    const balance = document.querySelector('.text-yellow-500');
+    let currentBalance = 5500;
 
-    // Handle Donation/History button toggle
-    donationBtn.addEventListener('click', function() {
-        donationSection.classList.remove('hidden');
-        historySection.classList.add('hidden');
-        donationBtn.classList.add('bg-green-200');
-        historyBtn.classList.remove('bg-green-200');
+    // Donation/History button
+    dBtn.addEventListener('click', function() {
+        dSec.classList.remove('hidden');
+        hSec.classList.add('hidden');
+        dBtn.classList.add('bg-green-200');
+        hBtn.classList.remove('bg-green-200');
     });
 
-    historyBtn.addEventListener('click', function() {
-        donationSection.classList.add('hidden');
-        historySection.classList.remove('hidden');
-        historyBtn.classList.add('bg-green-200');
-        donationBtn.classList.remove('bg-green-200');
+    hBtn.addEventListener('click', function() {
+        dSec.classList.add('hidden');
+        hSec.classList.remove('hidden');
+        hBtn.classList.add('bg-green-200');
+        dBtn.classList.remove('bg-green-200');
     });
 
-    // Handle Donate Now buttons
+    // Donate Now buttons
     const donateButtons = document.querySelectorAll('.bg-green-500');
     donateButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please enter a valid donation amount.');
                 return;
             }
-
             if (donationAmount > currentBalance) {
                 alert('Insufficient balance.');
                 return;
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentDonationAmount += donationAmount;
             currentAmountDisplay.textContent = `${currentDonationAmount} BDT`;
             currentBalance -= donationAmount;
-            balanceDisplay.textContent = `${currentBalance} BDT`;
+            balance.textContent = `${currentBalance} BDT`;
 
             // Add to history
             const donationTitle = card.querySelector('h3').textContent;
@@ -58,8 +57,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function addToHistory(title, amount) {
         const historyList = document.getElementById('history-list');
         const now = new Date();
-        const listItem = document.createElement('li');
-        listItem.textContent = `${now.toLocaleString()} - ${title}: ${amount} BDT`;
-        historyList.appendChild(listItem);
+        
+        const historyItem = document.createElement('li');
+        historyItem.classList.add('bg-white', 'p-4', 'rounded-sm', 'border-2');
+        historyItem.innerHTML = `
+            <div>
+                <span class="font-semibold text-lg">${amount} Taka is Donated for ${title}</span>
+                <p class="text-sm text-gray-500">Date: ${now.toUTCString()}</p>
+            </div>
+        `;
+        historyList.appendChild(historyItem);
     }
+
 });

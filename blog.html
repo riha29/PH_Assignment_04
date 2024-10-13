@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Donate Bangladesh</title>
+    <script src="app.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <p> ekhane blog lekha hoy</p>
+    <!-- Navbar -->
+    <nav class="sticky top-0 pb-8 pt-4 bg-yellow-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="bg-green-200 p-2 px-5 rounded text-green-700">Home</a>
+            <div class="text-center flex">
+                <img src="assets/logo.png" class="inline-block h-10">
+                <p class="pt-3 pl-3"> Donate Bangladesh</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center text-yellow-500">
+                    <img src="assets/coin.png" alt="Coin Icon" class="h-5 ml-1">
+                    <span class="px-3">5500 BDT</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- faq -->
+    <section>
+        <div class="my-16">
+            <h1 class="font-bold text-3xl text-center">
+                Important FAQs
+            </h1>
+            <!-- questions -->
+            <div class="mx-auto pt-12 justify-center max-w-5xl space-y-4">
+                <div class="collapse collapse-arrow border-2">
+                    <input type="radio" name="my-accordion-2" checked="checked" />
+                    <div class="collapse-title text-xl font-medium">What services do you offer?</div>
+                    <div class="collapse-content">
+                    <p class="opacity-50">We offer a range of services, including interior design, renovation, and commercial design solutions tailored to your needs.
+                    </p>
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow border-2">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title text-xl font-medium">How long does a typical project take?</div>
+                    <div class="collapse-content">
+                    <p class="opacity-50">The timeline depends on the scope of the project, but most designs are completed within 4-8 weeks.</p>
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow border-2">
+                    <input type="radio" name="my-accordion-2" checked="checked" />
+                    <div class="collapse-title text-xl font-medium">Do you work with a specific budget?</div>
+                    <div class="collapse-content">
+                    <p class="opacity-50">Yes, we can work within your specified budget to create a design that meets your needs without compromising on quality.
+                    </p>
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow border-2">
+                    <input type="radio" name="my-accordion-2" checked="checked" />
+                    <div class="collapse-title text-xl font-medium">Can I see examples of your previous work?</div>
+                    <div class="collapse-content">
+                    <p class="opacity-50">Absolutely! Visit our portfolio section to see examples of our completed projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>

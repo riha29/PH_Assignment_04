@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const balance = document.querySelector('.text-yellow-500');
     let currentBalance = 5500;
 
-    // Donation/History button
+    // Donation/History button toggle
     dBtn.addEventListener('click', function() {
         dSec.classList.remove('hidden');
         hSec.classList.add('hidden');
@@ -27,37 +27,52 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             const card = e.target.closest('.flex');
             const inputField = card.querySelector('input');
-            const donationAmount = parseInt(inputField.value);
+            const donationAmount = inputField.value.trim();  // get the trimmed input value
             const currentAmountDisplay = card.querySelector('.text-yellow-500');
             let currentDonationAmount = parseInt(currentAmountDisplay.textContent.replace(' BDT', ''));
 
             // Validate donation input
-            if (isNaN(donationAmount) || donationAmount <= 0) {
-                alert('Please enter a valid donation amount.');
-                return;
-            }
-            if (donationAmount > currentBalance) {
-                alert('Insufficient balance.');
-                return;
-            }
+            if (!validateDonationInput(donationAmount)) return;
 
             // Update donation amount and balance
-            currentDonationAmount += donationAmount;
+            currentDonationAmount += parseInt(donationAmount);
             currentAmountDisplay.textContent = `${currentDonationAmount} BDT`;
-            currentBalance -= donationAmount;
-            balance.textContent = `${currentBalance} BDT`;
+            updateBalance(parseInt(donationAmount));
 
             // Add to history
             const donationTitle = card.querySelector('h3').textContent;
-            addToHistory(donationTitle, donationAmount);
+            addToHistory(donationTitle, parseInt(donationAmount));
+
+            // Show confirmation modal after valid donation
+            showConfirmationModal();
         });
     });
+
+    // Common function to update balance
+    function updateBalance(amount) {
+        currentBalance -= amount;
+        balance.textContent = `${currentBalance} BDT`;
+    }
+
+    // Improved validation function to handle only numeric input
+    function validateDonationInput(donationAmount) {
+        // Check if the donation amount is a valid number and is greater than 0
+        if (!/^\d+$/.test(donationAmount)) {
+            alert('Please enter a valid numeric donation amount.');
+            return false;
+        }
+        if (parseInt(donationAmount) > currentBalance) {
+            alert('Insufficient balance.');
+            return false;
+        }
+        return true;
+    }
 
     // Add to history function
     function addToHistory(title, amount) {
         const historyList = document.getElementById('history-list');
         const now = new Date();
-        
+
         const historyItem = document.createElement('li');
         historyItem.classList.add('bg-white', 'p-4', 'rounded-sm', 'border-2');
         historyItem.innerHTML = `
@@ -68,5 +83,20 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         historyList.appendChild(historyItem);
     }
+
+    // Function to show the confirmation modal
+    function showConfirmationModal() {
+        const modal = document.getElementById('confirmation-modal');
+        modal.classList.remove('hidden');
+    }
+
+    // Function to hide the confirmation modal
+    function hideConfirmationModal() {
+        const modal = document.getElementById('confirmation-modal');
+        modal.classList.add('hidden');
+    }
+
+    // Close button functionality for the modal
+    document.getElementById('close-modal').addEventListener('click', hideConfirmationModal);
 
 });

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const balance = document.querySelector('.text-yellow-500');
     let currentBalance = 5500;
 
-    // Donation/History button toggle
+    // Donation/History button
     dBtn.addEventListener('click', function() {
         dSec.classList.remove('hidden');
         hSec.classList.add('hidden');
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             const card = e.target.closest('.flex');
             const inputField = card.querySelector('input');
-            const donationAmount = inputField.value.trim();  // get the trimmed input value
+            const donationAmount = inputField.value.trim();
             const currentAmountDisplay = card.querySelector('.text-yellow-500');
             let currentDonationAmount = parseInt(currentAmountDisplay.textContent.replace(' BDT', ''));
 
@@ -43,25 +43,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const donationTitle = card.querySelector('h3').textContent;
             addToHistory(donationTitle, parseInt(donationAmount));
 
-            // Show confirmation modal after valid donation
+            // Confirmation modal
             showConfirmationModal();
         });
     });
 
-    // Common function to update balance
     function updateBalance(amount) {
         currentBalance -= amount;
         balance.textContent = `${currentBalance} BDT`;
     }
 
-    // Improved validation function to handle only numeric input
     function validateDonationInput(donationAmount) {
-        // Check if the donation amount is a valid number and is greater than 0
-        if (!/^\d+$/.test(donationAmount)) {
+        const amount = Number(donationAmount);
+        if (isNaN(amount) || amount <= 0) {
             alert('Please enter a valid numeric donation amount.');
             return false;
         }
-        if (parseInt(donationAmount) > currentBalance) {
+        if (amount > currentBalance) {
             alert('Insufficient balance.');
             return false;
         }
